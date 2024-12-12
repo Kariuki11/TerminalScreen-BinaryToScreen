@@ -46,6 +46,6 @@ class TerminalScreen:
 # Example usage:
 if __name__ == "__main__":
     screen = TerminalScreen(10, 5, 0)  # 10x5 monochrome screen
-    screen.draw_character(2, 3, "A", "red")
-    screen.draw_character(5, 1, "B", "green")
+    screen.draw_character(2, 3, "The School Bus", "red")
+    screen.draw_character(5, 1, "The Child Is Late", "green")
     screen.render()
