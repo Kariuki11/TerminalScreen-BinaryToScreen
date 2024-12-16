@@ -1,6 +1,3 @@
-[]: # Title: Terminal Screen Renderer
-[]: # Description: A Python-based terminal screen renderer project.This project aims to create a simple and efficient way to render a terminal screen in a graphical environment.
-
 ### **README.md**
 
 # Terminal Screen Renderer
@@ -52,7 +49,7 @@ project/
 
 1. **Clone the Repository**:
    ```bash
-   git clone <your-repository-url>
+   git clone https://github.com/Kariuki11/TerminalScreen-BinaryToScreen
    cd project
    ```
 
@@ -141,4 +138,4 @@ This project is under the **MIT License**. Feel free to use and modify it.
 
 ## Contact
 
-For questions or suggestions, reach out to [Kenn] via email: `kariukikennedy288@gnmail.com`.
+For questions or suggestions, reach out to [Kenn] via email: `kariukikennedy288@gmail.com`.
