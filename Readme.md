@@ -1,105 +1,145 @@
-This project is about creating a program that can read and interpret a stream of binary data to display things like text, shapes, and colors on a terminal screen. The data stream follows a specific format, and the program must figure out what each part of the data means and perform the right action to show it on the screen.
+Here’s a clean and simple `README.md` file for your project. It explains the project purpose, setup, structure, and testing instructions clearly, making it approachable and easy to follow.
 
 ---
 
-### **What This Project Is About**
+### **README.md**
 
-1. **How the Data Is Organized**
-   - The input is a bunch of bytes (small pieces of data). Each section of the input tells the program what to do (a command) and includes information the program needs to perform that command.
-   - Each section has:
-     - A **Command Byte**: Says what to do (e.g., set up the screen, draw something).
-     - A **Length Byte**: Says how many extra pieces of data (bytes) follow.
-     - **Data Bytes**: Provide details for the command (like where to draw or what color to use).
+# Terminal Screen Renderer
+# The Project Is Still Under Development
 
-2. **What the Commands Do**
-   - **Screen Setup**: Sets the size of the screen and how many colors it can use.
-   - **Draw Character**: Places a single character (like a letter) at a specific spot on the screen.
-   - **Draw Line**: Draws a straight line between two points.
-   - **Render Text**: Displays a whole string of text starting from a specific spot.
-   - **Cursor Movement**: Moves the cursor without drawing anything.
-   - **Draw at Cursor**: Draws a character where the cursor is.
-   - **Clear Screen**: Erases everything on the screen.
-   - **End of File**: Marks the end of the data.
-
-3. **The Goal**
-   - The terminal window acts as the screen. The program needs to show what the commands describe, like drawing shapes, placing text, or changing colors.
+This is a Python-based **Terminal Screen Renderer** project. It simulates rendering and managing a terminal screen using commands streamed as bytes. The project processes commands like drawing characters, rendering text, and clearing the screen. It is modular and easy to extend for future improvements.
 
 ---
 
-### **What You Are Learning and Testing**
+## Features
 
-1. **Reading Binary Data**
-   - You’ll practice working with raw data in its smallest form—bytes—and learn how to break it into meaningful pieces.
-
-2. **Keeping Track of the Screen**
-   - You’ll need to "remember" the current screen state, like its size, the cursor’s position, and what’s already been drawn.
-
-3. **Drawing on the Terminal**
-   - You’ll learn how to display characters, move the cursor, and control what shows up on the terminal screen.
-
-4. **Handling Errors**
-   - If the data is incorrect or commands come in the wrong order (e.g., drawing before setting up the screen), your program needs to handle it properly.
-
-5. **Working Step by Step**
-   - Since each command depends on the one before it (e.g., you can’t draw without setting up the screen), this project helps you think logically and carefully.
+- **Screen Setup**: Initialize a virtual terminal screen with specified dimensions and color mode.  
+- **Draw Characters**: Update the screen at specific coordinates with characters and colors.  
+- **Render Text**: Place multiple characters starting at a defined point.  
+- **Clear Screen**: Reset the grid to an empty state.  
+- **Byte Stream Parsing**: Process byte streams to execute commands dynamically.
 
 ---
 
-### **How to Tackle This Project**
+## Project Structure
 
-1. **Understand the Input**
-   - Start by learning how to read binary data in the language you’re using. Break the input into commands and their data.
+Here’s the folder and file structure for the project:
 
-2. **Validate the Commands**
-   - Check that the commands make sense and come in the right order. For example, don’t let someone draw before setting up the screen.
-
-3. **Keep Track of the Screen**
-   - Use something like a grid (a 2D list) to represent the screen. Update it based on the commands.
-
-4. **Write Code for Each Command**
-   - Write small pieces of code to handle each command. For example:
-     - For **Screen Setup**, define the size and color mode.
-     - For **Draw Character**, place a character at a specific spot.
-     - For **Render Text**, add multiple characters in a row.
-
-5. **Show Output on the Terminal**
-   - Use terminal control codes or libraries to show what’s happening on the screen (e.g., moving the cursor or printing text at specific spots).
-
-6. **Finish Gracefully**
-   - Stop when the `End of File` command is reached.
+```
+project/
+├── main.py          # Main program for testing and running the screen
+├── screen.py        # TerminalScreen class: Handles screen operations
+├── parser.py        # ByteStreamParser class: Handles byte streams and commands
+├── utils/           
+│   ├── __init__.py  # Make utils a package
+│   └── commands.py  # Command handler logic
+├── tests/           
+│   ├── __init__.py  # Make tests a package (optional)
+│   └── test_parser.py # Tests for the ByteStreamParser
+└── test_streams/    
+    └── sample_stream.py # Sample byte streams simulating test input
+```
 
 ---
 
-### **What You’ll Get Out of It**
+## Requirements
 
-1. **How Computers Handle Data**
-   - This project helps you see how computers process data at a low level and turn it into something visible.
-
-2. **Practical Problem Solving**
-   - You’ll deal with real challenges like organizing the code, managing errors, and ensuring everything works step by step.
-
-3. **Understanding Terminals**
-   - You’ll learn how to control a terminal screen, a skill that’s useful for creating cool command-line tools.
+- **Python 3.8 or higher**  
+- A terminal or IDE that supports Python execution.
 
 ---
 
-### **How to Prepare**
+## Setup and Installation
 
-1. **Learn Binary Basics**
-   - Practice reading binary data and converting it into meaningful information.
+1. **Clone the Repository**:
+   ```bash
+   git clone <your-repository-url>
+   cd project
+   ```
 
-2. **Understand Terminal Commands**
-   - Look into how terminals let you control things like cursor movement or clearing the screen.
+2. **Verify Python Installation**:
+   Ensure Python is installed by running:
+   ```bash
+   python --version
+   ```
 
-3. **Plan Your Approach**
-   - Divide the project into smaller parts: reading data, validating commands, managing the screen, and showing the output.
-
-4. **Start Simple**
-   - Test with basic commands first, like setting up the screen and drawing one character.
-
-5. **Think About Edge Cases**
-   - Consider what happens if the input is wrong or incomplete.
+3. **Run the Main Program**:
+   Execute the main program to see the terminal screen in action:
+   ```bash
+   python main.py
+   ```
 
 ---
 
-This project is a great way to learn about low-level data processing, how commands control what we see, and how to make programs that interact directly with the terminal. It’s challenging but rewarding!
+## How to Test the Project
+
+1. **Test the Parser**:  
+   A test script `test_parser.py` is provided under the `tests/` directory. It uses sample byte streams defined in `test_streams/sample_stream.py`.
+
+   Run the test using:
+   ```bash
+   python tests/test_parser.py
+   ```
+
+2. **Sample Byte Stream**:
+   The sample byte stream simulates incoming data, like:
+   ```
+   SETUP 20 10 0
+   DRAW 5 5 X red
+   RENDER
+   CLEAR
+   TEXT 2 2 Hello World
+   RENDER
+   ```
+
+   The output of each command will be displayed in the terminal.
+
+---
+
+## Example Output
+
+Below is an example of the expected output:
+
+```
+Processing stream: SETUP 20 10 0
+Screen initialized with 20x10, color mode: 0
+
+Processing stream: DRAW 5 5 X red
+Drawn 'X' at (5, 5) with color 'red'
+
+Processing stream: RENDER
+[Empty rows]
+     X
+[Empty rows]
+
+Processing stream: CLEAR
+Screen cleared.
+
+Processing stream: TEXT 2 2 Hello World
+Text rendered starting at (2, 2): "Hello World"
+
+Processing stream: RENDER
+  Hello World
+[Other rows]
+```
+
+---
+
+## Contributing
+
+If you want to contribute:
+1. Fork the repository.  
+2. Make changes and submit a pull request.  
+3. Ensure tests pass before submitting.
+
+---
+
+## License
+
+This project is under the **MIT License**. Feel free to use and modify it.
+
+---
+
+## Contact
+
+For questions or suggestions, reach out to [Kenn] via email: `kariukikennedy288@gnmail.com`.
