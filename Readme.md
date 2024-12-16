@@ -1,6 +1,5 @@
-Here’s a clean and simple `README.md` file for your project. It explains the project purpose, setup, structure, and testing instructions clearly, making it approachable and easy to follow.
-
----
+[]: # Title: Terminal Screen Renderer
+[]: # Description: A Python-based terminal screen renderer project.This project aims to create a simple and efficient way to render a terminal screen in a graphical environment.
 
 ### **README.md**
 
